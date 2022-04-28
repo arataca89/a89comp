@@ -1,6 +1,6 @@
 # a89comp
 
-Utilitário que auxiliar a compilar projetos.
+Utilitário que auxilia a compilar projetos.
 
 Como o utilitario funciona:
 - O programa abre o arquivo a89comp.files, que deve estar no diretorio do projeto, e le linha por linha.
