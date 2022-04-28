@@ -3,12 +3,17 @@ Arquivo     : a89comp.cpp
 Descricao   : Utilitario que auxilia na compilacao de projetos
 Data        : 20220427
 
-Ultima atualizacao: 20220427
+Ultima atualizacao: 20220428
 
 Como o utilitario funciona:
-    - O programa abre o arquivo a89comp.files, le linha por linha.
-      Cada deve ter um nome de arquivo do projeto (arquivo.cpp).
-      A ultima linha deve ter o nome do executavel.
+    - O programa abre o arquivo a89comp.files, que deve estar no
+      diretorio do projeto, e le linha por linha.
+    - Cada linha deve ter um nome de opcao do g++ ou um nome de arquivo
+      do projeto (arquivo.cpp). A ultima linha deve ter o nome do
+      executavel.
+    - O programa le o arquivo e monta o comando g++ confome os dados
+      em cada linha.
+    - Depois o programa executa o comando de compilacao.
 
 arataca89@gmail.com
 Aulas particulares de programacao em C/C++ 
@@ -57,7 +62,7 @@ string get_file_extension(const string& filename){
 
 int main(int argc, char* argv[]){
     vector<string>args = argv_to_vector(argc, argv);
-    string comando = "g++";
+    string comando = "g++ ";
 
     ifstream input_file("a89comp.files");
     if (!input_file.is_open()) {
@@ -71,23 +76,12 @@ int main(int argc, char* argv[]){
         files.push_back(line);
     }
 
-    for(auto i: files) cout << i << '\n';
-
-
-/*
-    switch(args.size()){
-        case 1: uso();
-        case 2:
-            if(get_file_extension(args[1]).compare(".cpp")) uso();
-            comando += " ";
-            comando += args[1];
-            comando += " -o ";
-            comando += get_file_name(args[1]);
-            break;
-        default: uso();
+    for(int i = 0; i < files.size() - 1; i++){
+        comando += files[i];
+        comando += ' ';
     }
-
-    //cout << "comando: " << comando.c_str() << '\n';
+    comando +="-o ";
+    comando += files[files.size() - 1];
 
     int status = system(comando.c_str());
     
@@ -99,7 +93,7 @@ int main(int argc, char* argv[]){
             cout << "\n>>> ERRO; status: " << status << " <<<\n";
             break; 
     }  
-*/
+    cout << "Comando: " << comando << "\n";
     return 0;
 }
 /********************************************************************
