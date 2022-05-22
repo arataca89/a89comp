@@ -3,7 +3,7 @@
 Utilitário que auxilia a compilar projetos.
 
 ```
-USO: a89c [arquivo.cpp]
+USO: a89c
 ```
 
 Como o utilitário funciona:
