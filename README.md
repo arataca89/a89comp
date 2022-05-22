@@ -21,7 +21,7 @@ main.cpp
 main
 ```
 
-Exemplo de saída após execução do comando `´`a89c```:
+Exemplo de saída após execução do comando ```a89c```:
 ```
 >>> COMPILADO COM SUCESSO; status: 0 <<<
 Comando: g++ Aluno.cpp main.cpp -o main
